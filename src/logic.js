@@ -36,6 +36,12 @@ export function impl (left, right) {
   }
 }
 
+export function falsum () {
+  return {
+    type: 'falsum'
+  }
+}
+
 export function parse (text) {
   let atomrx = /:([a-z]+)/g
   let atomized = text.replace(atomrx, 'atom("$1")')
@@ -49,6 +55,10 @@ export function parse (text) {
   return doEval.call(context)
 }
 
+export function equal (left, right) {
+  return window._.isEqual(left, right)
+}
+
 export const rules = {
   'premise': {
     args: ['expr'],
@@ -60,7 +70,7 @@ export const rules = {
   },
   'falsum': {
     args: ['line', 'expr'],
-    pretty: 'Premise'
+    pretty: '⊥e'
   },
   'copy': {
     args: ['line'],
@@ -93,5 +103,21 @@ export const rules = {
   'modus_ponens': {
     args: ['line', 'line'],
     pretty: '→e'
+  },
+  'modus_tolens': {
+    args: ['line', 'line'],
+    pretty: 'MT'
+  },
+  'not_elim': {
+    args: ['line', 'line'],
+    pretty: '¬e'
+  },
+  'not_intro': {
+    args: ['line'],
+    pretty: '¬i'
+  },
+  'pbc': {
+    args: ['line'],
+    pretty: 'PBC'
   }
 }

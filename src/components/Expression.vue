@@ -15,6 +15,7 @@
     span.conn.not
     Expression(:expr="expr.expr")
   .expr.atom(v-else-if="expr.type === 'atom'", :data-atom="expr.atom")
+  .expr.falsum(v-else-if="expr.type === 'falsum'")
 </template>
 <script>
   export default {
@@ -32,8 +33,7 @@
 
     > .expr.and,
     > .expr.or,
-    > .expr.impl,
-    &:not(.not) > .expr.not {
+    > .expr.impl {
       &::before {
         content: '(';
       }
@@ -43,7 +43,8 @@
     }
 
     .conn {
-      font-weight: bold;
+      /*font-weight: bold;*/
+      /*color: #52c993;*/
       margin: 0 0.5em;
 
       &.not {
@@ -54,6 +55,12 @@
       &.or::before { content: '∨' }
       &.and::before { content: '∧' }
       &.impl::before { content: '→' }
+    }
+
+    &.falsum {
+      &::before {
+        content: '⊥';
+      }
     }
 
     &.atom {

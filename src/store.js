@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { not, and, impl } from './logic'
+import { not, and, impl, equal, falsum } from './logic'
 import { _ } from 'lodash'
 Vue.use(Vuex)
 
@@ -160,7 +160,7 @@ export default new Vuex.Store({
       let stmt = ctx.getters.line(istmt)
       let left = {...impl.expr.left}
       let expr = {...stmt.expr}
-      if (!window._.isEqual(left, expr)) throw Error('Invalid use of rule')
+      if (!equal(left, expr)) throw Error('Invalid use of rule')
 
       ctx.dispatch('addLine', {
         expr: impl.expr.right,
@@ -169,6 +169,91 @@ export default new Vuex.Store({
           lines: [iimpl, istmt]
         }
       })
+    },
+    modus_tolens (ctx, [iimpl, istmt]) {
+      let impl = ctx.getters.line(iimpl)
+      let stmt = ctx.getters.line(istmt)
+      if (stmt.expr.type === 'not' && impl.expr.type === 'impl') {
+        let left = {...impl.expr.left}
+        let right = {...impl.expr.right}
+        let expr = {...stmt.expr.expr}
+
+        if (equal(expr, right)) {
+          ctx.dispatch('addLine', {
+            expr: not(left),
+            reasoning: {
+              rule: 'modus_tolens',
+              lines: [iimpl, istmt]
+            }
+          })
+        }
+      }
+    },
+    not_elim (ctx, [istmt1, istmt2]) {
+      let left = ctx.getters.line(istmt1)
+      let right = ctx.getters.line(istmt2)
+
+      left = {...left.expr}
+      right = {...right.expr}
+
+      if (equal(not(left), right) || equal(left, not(right))) {
+        ctx.dispatch('addLine', {
+          expr: falsum(),
+          reasoning: {
+            rule: 'not_elim',
+            lines: [istmt1, istmt2]
+          }
+        })
+      }
+    },
+    not_intro (ctx, [istmt]) {
+      let open = ctx.getters.line(istmt)
+      if (!ctx.state.proof.slice(istmt).reduce(
+        (prev, cur) => prev && (cur.boxes >= open.boxes), true)) {
+        throw Error('Must use unclosed box')
+      }
+      if (ctx.getters.last.expr.type === 'falsum') {
+        ctx.dispatch('addLine', {
+          expr: not({...open.expr}),
+          boxdelta: -1,
+          reasoning: {
+            rule: 'not_intro',
+            lines: [istmt]
+          }
+        })
+      }
+    },
+    falsum (ctx, [istmt, expr]) {
+      let stmt = ctx.getters.line(istmt)
+
+      if (stmt.expr.type === 'falsum') {
+        ctx.dispatch('addLine', {
+          expr: expr,
+          reasoning: {
+            rule: 'falsum',
+            lines: [istmt]
+          }
+        })
+      }
+    },
+    pbc (ctx, [istmt]) {
+      let stmt = ctx.getters.line(istmt)
+      if (!ctx.state.proof.slice(istmt).reduce(
+          (prev, cur) => prev && (cur.boxes >= stmt.boxes), true)) {
+        throw Error('Must use unclosed box')
+      }
+
+      let last = ctx.getters.last
+      if (stmt.expr.type === 'not' && last.expr.type === 'falsum') {
+        ctx.dispatch('addLine', {
+          expr: {...stmt.expr.expr},
+          boxdelta: -1,
+          reasoning: {
+            rule: 'pbc',
+            lines: [istmt]
+          }
+        })
+      }
     }
   }
 })
