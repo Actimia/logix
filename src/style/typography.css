@@ -1,0 +1,33 @@
+body {
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
+  font-family: "Andale Mono", monospace;
+  font-size: var(--root-text-size);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+h4 {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1.5em;
+}
+
+h6 {
+  font-size: 1.25em;
+}
