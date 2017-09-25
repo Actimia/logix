@@ -3,10 +3,14 @@
     Statement(v-for="stmt in proof" v-bind:key='stmt.line' v-bind:statement='stmt')
     form(v-on:submit.prevent="processInput")
       input(v-model="input")
+    .buttons
+      button(@click="clear") Clear
+      button(@click="undo") Undo
 </template>
 <script>
   import Statement from './Statement'
   import { parse, rules } from '../logic'
+  import { mapMutations } from 'vuex'
   export default {
     data: function () {
       return {
@@ -35,7 +39,11 @@
           }
         }
         this.$store.dispatch(command, args)
-      }
+      },
+      ...mapMutations({
+        clear: 'clear',
+        undo: 'removeLast'
+      })
     },
     components: {
       Statement
@@ -46,7 +54,7 @@
 .console {
   font-family: monospace;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   flex-direction: column;
   padding: 20px;
   color: #42b983;
@@ -110,6 +118,31 @@
       &.or::before { content: '∨' }
       &.and::before { content: '∧' }
       &.impl::before { content: '→' }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    button {
+      color: var(--text-color);
+      background: none;
+      border: 1px solid;
+      padding: 5px 10px;
+      margin: 0 5px;
+      border-radius: 1px;
+      font-size: 1em;
+      &:hover {
+        box-shadow:
+          0 0 4px var(--text-color),
+          0 0 4px var(--text-color) inset;
+      }
+      &:active {
+        box-shadow:
+          0 0 4px var(--text-color);
+      }
     }
   }
 }

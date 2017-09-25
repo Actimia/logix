@@ -44,9 +44,6 @@
       display: flex;
       flex: 1;
 
-      /*border-left: 1px solid;*/
-      /*border-right: 1px solid;*/
-
       &.start {
         border-top: 1px solid;
 
@@ -73,12 +70,6 @@
         border-left: 1px solid;
         margin-right: 0.2em;
       }
-
-
     }
-
-
-
-
   }
 </style>

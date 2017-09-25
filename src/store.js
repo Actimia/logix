@@ -1,14 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersist from 'vuex-localstorage'
 import { not, and, impl, equal, falsum } from './logic'
-import { _ } from 'lodash'
 Vue.use(Vuex)
 
-export function unused () {
-  _.slice([1, 2, 3])
-}
-
 export default new Vuex.Store({
+  plugins: [
+    createPersist({
+      namespace: 'logix',
+      initialState: {},
+      expires: 1000 * 60 * 60 * 24 * 7
+    })
+  ],
   state: {
     proof: [
       // {
@@ -44,8 +47,11 @@ export default new Vuex.Store({
     doAddLine (state, line) {
       state.proof.push(line)
     },
-    closeBox (state, line) {
-      state.proof[line].boxdelta = -1
+    clear (state) {
+      state.proof = []
+    },
+    removeLast (state) {
+      state.proof.pop()
     }
   },
   actions: {
