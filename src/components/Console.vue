@@ -1,16 +1,18 @@
 <template lang="pug">
   .console
     Statement(v-for="stmt in proof" v-bind:key='stmt.line' v-bind:statement='stmt')
-    form(v-on:submit.prevent="processInput")
-      input(v-model="input")
-    .buttons
-      button(@click="clear") Clear
-      button(@click="undo") Undo
+    .controls
+      form(v-on:submit.prevent="processInput")
+        input(v-model="input")
+      .buttons
+        button(@click="clear") Clear
+        button(@click="undo") Undo
 </template>
 <script>
   import Statement from './Statement'
   import { parse, rules } from '../logic'
   import { mapMutations } from 'vuex'
+
   export default {
     data: function () {
       return {
@@ -24,8 +26,6 @@
     },
     methods: {
       processInput () {
-//        let last = this.$store.getters.last.line
-//        this.$store.dispatch('and_intro', [last - 1, last])
         if (!this.input.trim()) return
         let split = this.input.split(' ')
         let command = split.shift()
@@ -51,99 +51,75 @@
   }
 </script>
 <style>
-.console {
-  font-family: monospace;
-  display: flex;
-  align-items: stretch;
-  flex-direction: column;
-  padding: 20px;
-  color: #42b983;
-  border-radius: 5px;
-  background-color: #333;
-
-  counter-reset: linenumber;
-
-  form {
+  .console {
+    font-family: monospace;
     display: flex;
-    width: 100%;
-    align-items: baseline;
+    align-items: stretch;
+    flex-direction: column;
+    padding: 20px;
+    color: #42b983;
+    border-radius: 25px;
+    /*background-color: #383838;*/
 
-    &::before {
-      content: ">";
-      width: 3em;
+    counter-reset: linenumber;
+
+    .controls {
+      display: flex;
     }
 
-    input {
-      font-family: monospace;
-      font-size: 1.2em;
-      margin-top: 1em;
-      color: #42b983;
-      border: none;
-      background: none;
-      flex: 1;
-      padding: 0.5em 0.25em;
-      margin-left: 0.25em;
-    }
-  }
+    form {
+      display: flex;
+      width: 100%;
+      align-items: baseline;
 
-  > .console-line {
-
-    margin: 0;
-
-    &::before {
-      counter-increment: linenumber;
-      content: counter(linenumber) ':';
-      margin-right: 0.5em;
-    }
-
-    .atom {
-      font-style: italic;
       &::before {
-        content: attr(data-atom);
+        content: ">";
+        width: 3em;
       }
 
-      &[data-atom='chi']::before { content: 'χ'; }
-      &[data-atom='psi']::before { content: 'ψ'; }
-      &[data-atom='phi']::before { content: 'φ'; }
-      &[data-atom='omega']::before { content: 'ω'; }
-      &[data-atom='alpha']::before { content: 'α'; }
-      &[data-atom='beta']::before { content: 'β'; }
-      &[data-atom='tau']::before { content: 'τ'; }
+      input {
+        font-family: monospace;
+        font-size: 1.2em;
+        color: #42b983;
+        background: none;
+        flex: 1;
+        padding: 0.25em 0.25em;
+        margin: 0.5em 0.25em;
+
+        border: none;
+        border-radius: 1px;
+
+        &:focus {
+          outline: none;
+          border-bottom: 1px solid;
+        }
+      }
+
+
     }
 
-    .conn {
-      font-weight: bold;
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
 
-      &.not::before { content: '¬' }
-      &.or::before { content: '∨' }
-      &.and::before { content: '∧' }
-      &.impl::before { content: '→' }
-    }
-  }
-
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-    button {
-      color: var(--text-color);
-      background: none;
-      border: 1px solid;
-      padding: 5px 10px;
-      margin: 0 5px;
-      border-radius: 1px;
-      font-size: 1em;
-      &:hover {
-        box-shadow:
-          0 0 4px var(--text-color),
+      button {
+        color: var(--text-color);
+        background: none;
+        border: 1px solid;
+        padding: 0.25em 0.5em;
+        margin: 0 5px;
+        border-radius: 1px;
+        font-size: 1em;
+        &:hover {
+          box-shadow: 0 0 4px var(--text-color),
           0 0 4px var(--text-color) inset;
-      }
-      &:active {
-        box-shadow:
-          0 0 4px var(--text-color);
+        }
+        &:active {
+          box-shadow: 0 0 4px var(--text-color);
+        }
       }
     }
   }
-}
 </style>

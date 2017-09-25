@@ -1,8 +1,6 @@
 <template lang="pug">
 .header
-  a(href='/')
-    img(src='../assets/logo.png')
-  h1 Logix
+  img(src='../assets/logix.png')
 </template>
 <script>
 export default {
@@ -16,6 +14,7 @@ export default {
     align-items: center;
     width: 100%;
     max-width: var(--content-width);
+    padding: 20px;
 
   }
 </style>

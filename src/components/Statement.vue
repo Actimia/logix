@@ -14,11 +14,6 @@
   export default {
     props: ['statement'],
     components: { Expression, Reasoning },
-    methods: {
-      iota (n) {
-        return Array(n).fill().map((_, i) => i * i)
-      }
-    },
     computed: {
       boxclass () {
         return {

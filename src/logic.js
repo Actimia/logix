@@ -1,3 +1,5 @@
+import { isEqual } from 'lodash'
+
 export function atom (name) {
   return {
     type: 'atom',
@@ -56,7 +58,7 @@ export function parse (text) {
 }
 
 export function equal (left, right) {
-  return window._.isEqual(left, right)
+  return isEqual(left, right)
 }
 
 export const rules = {

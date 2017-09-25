@@ -1,0 +1,233 @@
+{
+  "proof": [
+    {
+      "type": "premise",
+      "expr": {
+        "type": "impl",
+        "left": {
+          "type": "impl",
+          "left": {
+            "type": "atom",
+            "atom": "p"
+          },
+          "right": {
+            "type": "atom",
+            "atom": "q"
+          }
+        },
+        "right": {
+          "type": "atom",
+          "atom": "r"
+        }
+      },
+      "reasoning": {
+        "rule": "premise"
+      },
+      "boxdelta": 0,
+      "boxes": 0,
+      "line": 0
+    },
+    {
+      "type": "premise",
+      "expr": {
+        "type": "impl",
+        "left": {
+          "type": "atom",
+          "atom": "s"
+        },
+        "right": {
+          "type": "not",
+          "expr": {
+            "type": "atom",
+            "atom": "p"
+          }
+        }
+      },
+      "reasoning": {
+        "rule": "premise"
+      },
+      "boxdelta": 0,
+      "boxes": 0,
+      "line": 1
+    },
+    {
+      "type": "premise",
+      "expr": {
+        "type": "atom",
+        "atom": "t"
+      },
+      "reasoning": {
+        "rule": "premise"
+      },
+      "boxdelta": 0,
+      "boxes": 0,
+      "line": 2
+    },
+    {
+      "type": "premise",
+      "expr": {
+        "type": "impl",
+        "left": {
+          "type": "and",
+          "left": {
+            "type": "not",
+            "expr": {
+              "type": "atom",
+              "atom": "s"
+            }
+          },
+          "right": {
+            "type": "atom",
+            "atom": "t"
+          }
+        },
+        "right": {
+          "type": "atom",
+          "atom": "q"
+        }
+      },
+      "reasoning": {
+        "rule": "premise"
+      },
+      "boxdelta": 0,
+      "boxes": 0,
+      "line": 3
+    },
+    {
+      "type": "assumption",
+      "expr": {
+        "type": "atom",
+        "atom": "p"
+      },
+      "reasoning": {
+        "rule": "assume"
+      },
+      "boxdelta": 1,
+      "boxes": 1,
+      "line": 4
+    },
+    {
+      "expr": {
+        "type": "not",
+        "expr": {
+          "type": "not",
+          "expr": {
+            "type": "atom",
+            "atom": "p"
+          }
+        }
+      },
+      "reasoning": {
+        "rule": "dnot_intro",
+        "lines": [
+          4
+        ]
+      },
+      "boxdelta": 0,
+      "boxes": 1,
+      "line": 5
+    },
+    {
+      "expr": {
+        "type": "not",
+        "expr": {
+          "type": "atom",
+          "atom": "s"
+        }
+      },
+      "reasoning": {
+        "rule": "modus_tolens",
+        "lines": [
+          1,
+          5
+        ]
+      },
+      "boxdelta": 0,
+      "boxes": 1,
+      "line": 6
+    },
+    {
+      "expr": {
+        "type": "and",
+        "left": {
+          "type": "not",
+          "expr": {
+            "type": "atom",
+            "atom": "s"
+          }
+        },
+        "right": {
+          "type": "atom",
+          "atom": "t"
+        }
+      },
+      "reasoning": {
+        "rule": "and_intro",
+        "lines": [
+          6,
+          2
+        ]
+      },
+      "boxdelta": 0,
+      "boxes": 1,
+      "line": 7
+    },
+    {
+      "expr": {
+        "type": "atom",
+        "atom": "q"
+      },
+      "reasoning": {
+        "rule": "modus_ponens",
+        "lines": [
+          3,
+          7
+        ]
+      },
+      "boxdelta": 0,
+      "boxes": 1,
+      "line": 8
+    },
+    {
+      "expr": {
+        "type": "impl",
+        "left": {
+          "type": "atom",
+          "atom": "p"
+        },
+        "right": {
+          "type": "atom",
+          "atom": "q"
+        }
+      },
+      "boxdelta": -1,
+      "reasoning": {
+        "rule": "impl_intro",
+        "lines": [
+          [
+            4,
+            8
+          ]
+        ]
+      },
+      "boxes": 0,
+      "line": 9
+    },
+    {
+      "expr": {
+        "type": "atom",
+        "atom": "r"
+      },
+      "reasoning": {
+        "rule": "modus_ponens",
+        "lines": [
+          0,
+          9
+        ]
+      },
+      "boxdelta": 0,
+      "boxes": 0,
+      "line": 10
+    }
+  ]
+}
