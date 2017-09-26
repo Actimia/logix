@@ -1,6 +1,11 @@
+html {
+  font-size: var(--root-text-size);
+}
+
 body {
   font-family: var(--font-stack);
-  font-size: var(--root-text-size);
+  line-height: 1.418;
+  font-size: 1rem;
   color: var(--text-color);
 
   -webkit-font-smoothing: antialiased;
@@ -12,6 +17,7 @@ p, ul, ol {
 }
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-stack-mono);
   font-weight: bold;
   margin: 0.5em 0 0.35em;
 }

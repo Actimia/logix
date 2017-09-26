@@ -26,6 +26,7 @@
 </script>
 <style>
   .statement {
+    font-family: var(--font-stack-mono);
     line-height: 2.0em;
     display: flex;
     width: 100%;

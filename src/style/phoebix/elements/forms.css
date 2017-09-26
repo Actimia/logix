@@ -12,6 +12,7 @@ form {
     padding: 0;
     border: none;
     > legend {
+      font-family: var(--font-stack-mono);
       font-weight: bold;
       margin: 0.25em 0;
     }
@@ -24,7 +25,8 @@ form {
 
   input {
     color: inherit;
-    font: inherit;
+    font-size: inherit;
+    font-family: var(--font-stack-mono);
     background: none;
     border: 1px solid;
     border-radius: 1px;
@@ -54,6 +56,7 @@ form {
       }
       &::before {
         margin-right: 0.5em;
+        font-family: var(--font-stack-mono);
       }
     }
 

@@ -5,11 +5,11 @@
         img(src='../assets/phoebix-small.png')
       h1 Phoebix
     nav
-      a(href="/") Home
-      a(href="/test/") CSS
-      a(href="/test/") About
-      a(href="/test/") Buy
-      a(href="/test/") Whatever
+      router-link(to="/") Home
+      router-link(to="/test/") CSS
+      router-link(to="/test/") About
+      router-link(to="/test/") Buy
+      router-link(to="/asdf/") 404
 </template>
 <script>
   export default {

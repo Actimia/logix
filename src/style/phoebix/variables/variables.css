@@ -1,7 +1,8 @@
 @import 'colors.css';
 
 :root {
-  --font-stack: "Droid Sans Mono", monospace;
+  --font-stack: "Droid Sans", sans-serif;
+  --font-stack-mono: "Droid Sans Mono", monospace;
   --root-text-size: 18px;
   --fg-color: var(--green);
   --bg-color: var(--grey);
