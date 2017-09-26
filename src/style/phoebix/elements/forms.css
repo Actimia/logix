@@ -1,0 +1,81 @@
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1em;
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 0 1em;
+    padding: 0;
+    border: none;
+    > legend {
+      font-weight: bold;
+      margin: 0.25em 0;
+    }
+  }
+
+  label {
+    margin-bottom: 0.25em;
+    padding-left: 0.25em;
+  }
+
+  input {
+    color: inherit;
+    font: inherit;
+    background: none;
+    border: 1px solid;
+    border-radius: 1px;
+    padding: 0.3em 0.5em;
+    outline: none;
+    width: 100%;
+    margin-bottom: 0.5em;
+
+    &:focus {
+      color: var(--accent-color);
+      /*noinspection CssInvalidPropertyValue*/
+      box-shadow: 0 0 2px, inset 0 0 2px;
+    }
+    &[type='radio']:focus,
+    &[type='checkbox']:focus {
+      box-shadow: none;
+    }
+  }
+
+  input[type='checkbox'], input[type='radio'] {
+    position: absolute;
+    left: -9999px;
+
+    & + label {
+      &:hover {
+        cursor: pointer;
+      }
+      &::before {
+        margin-right: 0.5em;
+      }
+    }
+
+    &:focus + label {
+      color: var(--accent-color);
+    }
+  }
+
+  input[type='checkbox'] + label::before {
+    content: '[ ]';
+  }
+
+  input[type='checkbox']:checked + label::before {
+    content: '[x]';
+  }
+
+  input[type='radio'] + label::before {
+    content: '( )';
+  }
+
+  input[type='radio']:checked + label::before {
+    content: '(o)';
+  }
+
+}

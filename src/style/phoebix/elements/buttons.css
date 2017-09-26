@@ -1,0 +1,21 @@
+button, input[type='submit'] {
+  border: 1px solid;
+  background: none;
+  border-radius: 1px;
+  font: inherit;
+  color: inherit;
+  padding: 0.25em 0.75em;
+  margin: 0.5em 0.25em;
+  outline: none;
+  cursor: pointer;
+
+  &:hover, &:focus {
+    box-shadow: 0 0 2px inset, 0 0 2px;
+    color: var(--accent-color);
+  }
+  &:active {
+    //background: var(--fg-color);
+    background: var(--bg-accent-color);
+    color: var(--accent-color);
+  }
+}

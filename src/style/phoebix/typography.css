@@ -1,10 +1,19 @@
 body {
-  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
-  font-family: "Andale Mono", monospace;
+  font-family: var(--font-stack);
   font-size: var(--root-text-size);
   color: var(--text-color);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+p, ul, ol {
+  margin: 0.7em 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin: 0.5em 0 0.35em;
 }
 
 h1 {
@@ -12,16 +21,15 @@ h1 {
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 2.25em;
 }
 
 h3 {
-  font-size: 1.8em;
+  font-size: 2em;
 }
 
 h4 {
-  font-size: 1.5em;
-  font-weight: bold;
+  font-size: 1.75em;
 }
 
 h5 {

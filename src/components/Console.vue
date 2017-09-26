@@ -52,12 +52,11 @@
 </script>
 <style>
   .console {
-    font-family: monospace;
     display: flex;
     align-items: stretch;
     flex-direction: column;
     padding: 20px;
-    color: #42b983;
+    color: var(--text-color);
     border-radius: 25px;
     /*background-color: #383838;*/
 
@@ -80,7 +79,7 @@
       input {
         font-family: monospace;
         font-size: 1.2em;
-        color: #42b983;
+        color: inherit;
         background: none;
         flex: 1;
         padding: 0.25em 0.25em;
@@ -104,22 +103,22 @@
       justify-content: center;
       align-items: center;
 
-      button {
-        color: var(--text-color);
-        background: none;
-        border: 1px solid;
-        padding: 0.25em 0.5em;
-        margin: 0 5px;
-        border-radius: 1px;
-        font-size: 1em;
-        &:hover {
-          box-shadow: 0 0 4px var(--text-color),
-          0 0 4px var(--text-color) inset;
-        }
-        &:active {
-          box-shadow: 0 0 4px var(--text-color);
-        }
-      }
+      /*button {*/
+        /*color: var(--text-color);*/
+        /*background: none;*/
+        /*border: 1px solid;*/
+        /*padding: 0.25em 0.5em;*/
+        /*margin: 0 5px;*/
+        /*border-radius: 1px;*/
+        /*font-size: 1em;*/
+        /*&:hover {*/
+          /*box-shadow: 0 0 4px var(--text-color),*/
+          /*0 0 4px var(--text-color) inset;*/
+        /*}*/
+        /*&:active {*/
+          /*box-shadow: 0 0 4px var(--text-color);*/
+        /*}*/
+      /*}*/
     }
   }
 </style>

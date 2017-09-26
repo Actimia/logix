@@ -1,0 +1,13 @@
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: var(--magenta);
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "unnamedproj",
+  "name": "Logix",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A natural deduction proof assistant written in Vue.",
   "author": "Viking Edström <actimia1@gmail.com>",
   "private": true,
   "scripts": {
@@ -10,7 +10,9 @@
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src"
   },
-  "dependencies": {},
+  "dependencies": {
+    "google-fonts-webpack-plugin": "^0.4.3"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
