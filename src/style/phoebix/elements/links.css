@@ -4,10 +4,41 @@ a {
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    color: var(--accent-color);
   }
 
   &:visited {
     color: var(--magenta);
+
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  a {
+    padding: 0.25em 0.5em;
+    margin: 0 0.5em;
+    border-bottom: 2px solid transparent;
+
+    &.router-link-exact-active {
+      color: var(--accent-color);
+      &:visited {
+        color: var(--accent-color);
+      }
+    }
+
+    &:visited {
+      color: inherit;
+    }
+    &:hover {
+      color: var(--accent-color);
+      border-bottom: 2px solid;
+    }
   }
 }

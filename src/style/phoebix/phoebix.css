@@ -8,6 +8,8 @@
 @import 'elements/media.css';
 @import 'elements/buttons.css';
 @import 'elements/forms.css';
+@import 'elements/lists.css';
+@import 'elements/tables.css';
 
 @import 'layout/base.css';
 @import 'layout/container.css';

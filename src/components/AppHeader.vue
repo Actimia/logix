@@ -1,19 +1,22 @@
 <template lang="pug">
   header.container
     .brand
-      a(href='/')
-        img(src='../assets/phoebix-small.png')
+      router-link(to='/')
+        phoebix-logo
       h1 Phoebix
     nav
-      router-link(to="/") Home
+      router-link(to="/") Logix
       router-link(to="/test/") CSS
-      router-link(to="/test/") About
-      router-link(to="/test/") Buy
+      router-link(to="/blog/") Blog
       router-link(to="/asdf/") 404
 </template>
 <script>
+  import PhoebixLogo from './Logo.vue'
   export default {
-    name: 'app-header'
+    name: 'app-header',
+    components: {
+      'phoebix-logo': PhoebixLogo
+    }
   }
 </script>
 <style>
@@ -33,25 +36,6 @@
         flex: 1;
       }
     }
-    nav {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
 
-      a {
-        color: inherit;
-        padding: 0.25em 0.5em;
-        margin: 0 0.5em;
-        border-bottom: 2px solid transparent;
-        &:visited {
-          color: inherit;
-        }
-        &:hover {
-          color: var(--accent-color);
-          border-bottom: 2px solid;
-          text-decoration: none;
-        }
-      }
-    }
   }
 </style>

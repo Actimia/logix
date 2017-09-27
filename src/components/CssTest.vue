@@ -28,8 +28,33 @@
     ul
       li Reason 1
       li Reason 2
+        ul
+          li Subreason 1
+          li Subreason 2
+          li Subreason 3
       li Reason 3
     p {{ lorem }}
+    table
+      thead
+        th City
+        th Name
+        th(width="15%") Wins
+        th(width="15%") Losses
+      tr
+        td Kansas City
+        td Chiefs
+        td 3
+        td 0
+      tr
+        td New England
+        td Patriots
+        td 2
+        td 1
+      tr
+        td Seattle
+        td Seahawks
+        td 1
+        td 2
     h2 H2 Test
     p {{ lorem }}
     img(src="https://placebear.com/g/400/300")

@@ -1,0 +1,19 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  > thead > th {
+    text-align: left;
+  }
+
+  tr:hover {
+    background-color: var(--bg-accent-color);
+  }
+  td, th {
+    margin: 0;
+    border: none;
+    padding: 0.25em 0.5em;
+  }
+
+}
+
+

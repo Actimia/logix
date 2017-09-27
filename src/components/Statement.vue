@@ -42,12 +42,11 @@
 
       &.start {
         border-top: 1px solid;
-
       }
 
       &.end {
         border-top: 1px solid;
-        margin: 0 0.2em;
+        margin: 0 0.25em;
         padding: 0 0.8em;
       }
 
@@ -59,12 +58,12 @@
     .box {
       &.left {
         border-right: 1px solid;
-        margin-left: 0.2em;
+        margin-left: 0.25em;
       }
 
       &.right {
         border-left: 1px solid;
-        margin-right: 0.2em;
+        margin-right: 0.25em;
       }
     }
   }

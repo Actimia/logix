@@ -1,7 +1,8 @@
 <template lang="pug">
   .console
-    Statement(v-for="stmt in proof" v-bind:key='stmt.line' v-bind:statement='stmt')
-    .container.horizontal
+    .container.statements
+      Statement(v-for="stmt in proof" v-bind:key='stmt.line' v-bind:statement='stmt')
+    .container.horizontal.controls
       form(v-on:submit.prevent="processInput")
         input(v-model="input")
       .container.horizontal
@@ -65,19 +66,21 @@
 
       &::before {
         content: ">";
+        font-weight: bold;
         width: 3em;
       }
 
       input {
-        font-size: 1.2em;
+        /*font-size: 1.2em;*/
         font-family: var(--font-stack-mono);
         color: inherit;
+        line-height: inherit;
         flex: 1;
-        padding: 0.25em 0.25em;
+        padding: 0.25em 0.5em;
         margin: 0.5em 0.25em;
 
-        border: none;
-        border-bottom: 1px solid transparent;
+        /*border: none;*/
+        /*border-bottom: 1px solid transparent;*/
         border-radius: 1px;
 
         &:focus {
