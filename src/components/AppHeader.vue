@@ -8,6 +8,7 @@
       router-link(to="/") Logix
       router-link(to="/test/") CSS
       router-link(to="/blog/") Blog
+      router-link(to="/plots/") Plots
       router-link(to="/asdf/") 404
 </template>
 <script>

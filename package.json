@@ -11,7 +11,8 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
-    "google-fonts-webpack-plugin": "^0.4.3"
+    "google-fonts-webpack-plugin": "^0.4.3",
+    "ify-loader": "^1.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -46,6 +47,7 @@
     "opn": "^5.1.0",
     "optimize-css-assets-webpack-plugin": "^2.0.0",
     "ora": "^1.2.0",
+    "plotly.js": "^1.31.0",
     "postcss-import": "^10.0.0",
     "postcss-load-config": "^1.2.0",
     "postcss-loader": "^2.0.6",

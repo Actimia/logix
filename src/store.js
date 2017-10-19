@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersist from 'vuex-localstorage'
 import { not, and, impl, equal, falsum } from './logic'
+
+import mockdata from './assets/plots/weights.json'
+import targetweights from './assets/plots/targetweights.json'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -13,6 +16,8 @@ export default new Vuex.Store({
     })
   ],
   state: {
+    plots: mockdata,
+    targetweights: targetweights,
     proof: [
       // {
       //   expr: atom('phi'),
@@ -52,6 +57,13 @@ export default new Vuex.Store({
     },
     removeLast (state) {
       state.proof.pop()
+    },
+    addWeight (state) {
+      state.plots.push({
+        measurement_type: 'weight',
+        measured_at: new Date().toISOString(),
+        value: 66
+      })
     }
   },
   actions: {
