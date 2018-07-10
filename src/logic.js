@@ -61,6 +61,7 @@ export function equal (left, right) {
   return isEqual(left, right)
 }
 
+// these are the rules
 export const rules = {
   'premise': {
     args: ['expr'],
